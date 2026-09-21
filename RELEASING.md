@@ -10,9 +10,17 @@ Only the repository owner can do this part. It is needed once, not per release.
 ### 1. A Central Portal account and the namespace
 
 Sign in at [central.sonatype.com](https://central.sonatype.com) **with GitHub**. Signing in that
-way verifies the `io.github.<your-username>` namespace automatically, because the account you
-signed in with is the proof. Check under *Namespaces* that `io.github.ialakey` is listed and
-verified.
+way usually provisions `io.github.<your-username>` for you, because GitHub already gives every
+account a `github.io` domain and that is the proof Sonatype needs. Check under *Namespaces* that
+`io.github.ialakey` is there.
+
+If it is not, register it by hand: *Add Namespace* → `io.github.ialakey` → it hands you a
+verification key → create a public repository whose **name is that key** → Sonatype confirms
+ownership, and the empty repository can then be deleted.
+
+```bash
+gh repo create <verification-key> --public --description "Sonatype namespace verification"
+```
 
 Then *View Account* → *Generate User Token*. It gives a username and a password; they are not
 your portal login and can be regenerated at any time.

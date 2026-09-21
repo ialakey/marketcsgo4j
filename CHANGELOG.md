@@ -3,6 +3,17 @@
 All notable changes to this project are documented here. This project follows
 [semantic versioning](https://semver.org/).
 
+## [0.1.1] - 2026-09-21
+
+### Fixed
+
+- The build now runs through the Maven wrapper, pinned to 3.9.9. JitPack's build image ships an
+  older Maven than the compiler plugin requires, so `v0.1.0` resolved to nothing there. JitPack
+  treats a version as immutable and will not rebuild one it has already tried, hence a new version
+  rather than a corrected tag.
+- `LICENSE` is now plain MIT text, so GitHub recognises it. The affiliation disclaimer that
+  prevented that moved to `NOTICE`.
+
 ## [0.1.0] - 2026-09-21
 
 First release.
@@ -33,4 +44,5 @@ First release.
   delivery queue that drops and counts rather than buffering.
 - **Spring Boot starter** with `@ConfigurationProperties` and Micrometer metrics.
 
+[0.1.1]: https://github.com/ialakey/marketcsgo4j/releases/tag/v0.1.1
 [0.1.0]: https://github.com/ialakey/marketcsgo4j/releases/tag/v0.1.0

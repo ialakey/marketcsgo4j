@@ -1,5 +1,6 @@
 # marketcsgo4j
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.ialakey/marketcsgo4j-core?label=maven%20central)](https://central.sonatype.com/artifact/io.github.ialakey/marketcsgo4j-core)
 [![build](https://github.com/ialakey/marketcsgo4j/actions/workflows/build.yml/badge.svg)](https://github.com/ialakey/marketcsgo4j/actions/workflows/build.yml)
 [![JitPack](https://jitpack.io/v/ialakey/marketcsgo4j.svg)](https://jitpack.io/#ialakey/marketcsgo4j)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)

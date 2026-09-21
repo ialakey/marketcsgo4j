@@ -35,7 +35,7 @@ jobs:
           cache: maven
 
       - name: Build and test
-        run: mvn -B -ntp verify
+        run: ./mvnw -B -ntp verify
 
       # The interesting failures here are timing ones, and a bare "tests failed"
       # line is not enough to tell a broken limiter from a busy runner.

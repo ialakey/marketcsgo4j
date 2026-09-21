@@ -8,6 +8,12 @@
 *.md     text eol=lf
 *.imports text eol=lf
 
+# The wrapper scripts are executed by their platform's shell, so each keeps the
+# line endings that shell expects.
+mvnw     text eol=lf
+*.cmd    text eol=crlf
+*.bat    text eol=crlf
+
 *.jar    binary
 *.png    binary
 *.zip    binary

@@ -29,6 +29,6 @@ jobs:
         with:
           languages: java-kotlin
 
-      - run: mvn -B -ntp -DskipTests package
+      - run: ./mvnw -B -ntp -DskipTests package
 
       - uses: github/codeql-action/analyze@v3

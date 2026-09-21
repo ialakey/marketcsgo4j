@@ -5,10 +5,10 @@ Thanks for looking. Issues and pull requests are both welcome.
 ## Building
 
 ```bash
-mvn verify
+./mvnw verify
 ```
 
-JDK 21 or newer. Nothing else to install: the tests run against a market that answers inside the
+JDK 21 or newer; Maven arrives through the wrapper. Nothing else to install: the tests run against a market that answers inside the
 JVM, so there is no network access, no key and no container involved.
 
 ```

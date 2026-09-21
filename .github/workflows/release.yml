@@ -30,7 +30,7 @@ jobs:
       # Tests run again here rather than trusting the build that produced the
       # tag: a release is the one artefact nobody re-checks afterwards.
       - name: Build, test and package
-        run: mvn -B -ntp -P release verify
+        run: ./mvnw -B -ntp -P release verify
 
       - name: Collect artefacts
         run: |

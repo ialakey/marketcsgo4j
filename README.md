@@ -452,10 +452,10 @@ as nulls without ever failing loudly enough to be noticed.
 ## Building
 
 ```bash
-mvn install
+./mvnw verify
 ```
 
-Needs JDK 21. The tests run against a market that answers inside the JVM — real HTTP, because
+Needs JDK 21. Maven comes from the wrapper, so the version is the same one CI uses. The tests run against a market that answers inside the JVM — real HTTP, because
 most of what is worth testing lives between the client and the wire: how a query is encoded, what
 a 500 does to a retry, how requests are spaced.
 

@@ -1,7 +1,11 @@
 # JitPack builds tags on demand, which is how this library can be depended on
-# before it is on Maven Central. It defaults to an older JDK, and this project
-# needs 21.
+# before it is on Maven Central.
+#
+# Both lines are load-bearing. The build image defaults to an older JDK than
+# this project needs, and its bundled Maven is older than the compiler plugin
+# requires, so the build goes through the wrapper rather than whatever mvn
+# happens to be on the image.
 jdk:
   - openjdk21
 install:
-  - mvn -B -ntp install -DskipTests
+  - ./mvnw -B -ntp install -DskipTests

@@ -16,30 +16,21 @@ Java 21, one dependency (Jackson), no framework in the core.
 [Русская документация](README.ru.md)
 
 ```xml
-<repositories>
-  <repository>
-    <id>jitpack.io</id>
-    <url>https://jitpack.io</url>
-  </repository>
-</repositories>
-
 <dependency>
-  <groupId>com.github.ialakey.marketcsgo4j</groupId>
+  <groupId>io.github.ialakey</groupId>
   <artifactId>marketcsgo4j-core</artifactId>
-  <version>v0.1.2</version>
+  <version>0.1.2</version>
 </dependency>
 ```
 
 <details>
-<summary>Gradle</summary>
+<summary>Gradle, and the other two modules</summary>
 
 ```kotlin
-repositories { maven("https://jitpack.io") }
-
 dependencies {
-    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-core:v0.1.2")
-    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-ws:v0.1.2")               // live price feed
-    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-spring-boot-starter:v0.1.2")
+    implementation("io.github.ialakey:marketcsgo4j-core:0.1.2")
+    implementation("io.github.ialakey:marketcsgo4j-ws:0.1.2")                 // live price feed
+    implementation("io.github.ialakey:marketcsgo4j-spring-boot-starter:0.1.2")
 }
 ```
 </details>
@@ -226,9 +217,9 @@ minute spends its whole rate limit on data it mostly already had.
 
 ```xml
 <dependency>
-  <groupId>com.github.ialakey.marketcsgo4j</groupId>
+  <groupId>io.github.ialakey</groupId>
   <artifactId>marketcsgo4j-ws</artifactId>
-  <version>v0.1.2</version>
+  <version>0.1.2</version>
 </dependency>
 ```
 
@@ -361,9 +352,9 @@ Retries are decided by what repeating the request would cost, not by the caller:
 
 ```xml
 <dependency>
-  <groupId>com.github.ialakey.marketcsgo4j</groupId>
+  <groupId>io.github.ialakey</groupId>
   <artifactId>marketcsgo4j-spring-boot-starter</artifactId>
-  <version>v0.1.2</version>
+  <version>0.1.2</version>
 </dependency>
 ```
 
@@ -471,8 +462,9 @@ a 500 does to a retry, how requests are spaced.
   frame is rejected as a bad request.
 - The payload shape on the items channel is not documented. `ItemUpdate` exposes the fields the
   documentation names and hands you the rest as JSON.
-- Not on Maven Central yet, so the snippets above go through JitPack, which builds the tag
-  on demand. The Maven coordinates inside the project are `io.github.ialakey:marketcsgo4j-*`.
+- Published to Maven Central as `io.github.ialakey:marketcsgo4j-*`. Tagged builds are also on
+  [JitPack](https://jitpack.io/#ialakey/marketcsgo4j) if you would rather build from source, and
+  every release carries the jars with sources and javadoc.
 
 ## Licence
 

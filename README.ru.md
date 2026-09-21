@@ -16,30 +16,21 @@ Java 21, одна зависимость (Jackson), никаких фреймв�
 [English documentation](README.md)
 
 ```xml
-<repositories>
-  <repository>
-    <id>jitpack.io</id>
-    <url>https://jitpack.io</url>
-  </repository>
-</repositories>
-
 <dependency>
-  <groupId>com.github.ialakey.marketcsgo4j</groupId>
+  <groupId>io.github.ialakey</groupId>
   <artifactId>marketcsgo4j-core</artifactId>
-  <version>v0.1.2</version>
+  <version>0.1.2</version>
 </dependency>
 ```
 
 <details>
-<summary>Gradle</summary>
+<summary>Gradle и остальные два модуля</summary>
 
 ```kotlin
-repositories { maven("https://jitpack.io") }
-
 dependencies {
-    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-core:v0.1.2")
-    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-ws:v0.1.2")               // живой поток цен
-    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-spring-boot-starter:v0.1.2")
+    implementation("io.github.ialakey:marketcsgo4j-core:0.1.2")
+    implementation("io.github.ialakey:marketcsgo4j-ws:0.1.2")                 // живой поток цен
+    implementation("io.github.ialakey:marketcsgo4j-spring-boot-starter:0.1.2")
 }
 ```
 </details>
@@ -226,9 +217,9 @@ for (String chunk : index.chunks()) {
 
 ```xml
 <dependency>
-  <groupId>com.github.ialakey.marketcsgo4j</groupId>
+  <groupId>io.github.ialakey</groupId>
   <artifactId>marketcsgo4j-ws</artifactId>
-  <version>v0.1.2</version>
+  <version>0.1.2</version>
 </dependency>
 ```
 
@@ -363,9 +354,9 @@ try {
 
 ```xml
 <dependency>
-  <groupId>com.github.ialakey.marketcsgo4j</groupId>
+  <groupId>io.github.ialakey</groupId>
   <artifactId>marketcsgo4j-spring-boot-starter</artifactId>
-  <version>v0.1.2</version>
+  <version>0.1.2</version>
 </dependency>
 ```
 
@@ -472,8 +463,9 @@ JsonNode body = client.raw("some-new-method", RequestKind.READ, "param", "value"
   отвечает «invalid token» на плохой токен, а старый кадр v2 отклоняется как bad request.
 - Формат payload в канале items не документирован. `ItemUpdate` отдаёт поля, которые названы в
   документации, и передаёт остальное как JSON.
-- В Maven Central пока нет, поэтому сниппеты выше идут через JitPack, который собирает тег по
-  запросу. Внутри проекта координаты — `io.github.ialakey:marketcsgo4j-*`.
+- Опубликовано в Maven Central как `io.github.ialakey:marketcsgo4j-*`. Собранные теги есть и на
+  [JitPack](https://jitpack.io/#ialakey/marketcsgo4j), если удобнее собирать из исходников, а к каждому релизу
+  приложены jarʼы с исходниками и javadoc.
 
 ## Лицензия
 

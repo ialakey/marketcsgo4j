@@ -475,4 +475,8 @@ a 500 does to a retry, how requests are spaced.
 
 ## Licence
 
-MIT.
+MIT. See [LICENSE](LICENSE).
+
+An independent, unofficial library. Not affiliated with Valve Corporation or with
+market.csgo.com (CRYSTAL FUTURE OU); see [NOTICE](NOTICE). Using the API is governed by
+[their terms](https://market.csgo.com/en/static/terms).

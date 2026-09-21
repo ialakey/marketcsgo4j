@@ -476,4 +476,8 @@ mvn install
 
 ## Лицензия
 
-MIT.
+MIT, см. [LICENSE](LICENSE).
+
+Независимая неофициальная библиотека. Не связана ни с Valve Corporation, ни с
+market.csgo.com (CRYSTAL FUTURE OU); см. [NOTICE](NOTICE). Использование API регулируется
+[их правилами](https://market.csgo.com/ru/static/terms).

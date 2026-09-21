@@ -26,7 +26,7 @@ Java 21, one dependency (Jackson), no framework in the core.
 <dependency>
   <groupId>com.github.ialakey.marketcsgo4j</groupId>
   <artifactId>marketcsgo4j-core</artifactId>
-  <version>v0.1.1</version>
+  <version>v0.1.2</version>
 </dependency>
 ```
 
@@ -37,9 +37,9 @@ Java 21, one dependency (Jackson), no framework in the core.
 repositories { maven("https://jitpack.io") }
 
 dependencies {
-    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-core:v0.1.1")
-    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-ws:v0.1.1")               // live price feed
-    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-spring-boot-starter:v0.1.1")
+    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-core:v0.1.2")
+    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-ws:v0.1.2")               // live price feed
+    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-spring-boot-starter:v0.1.2")
 }
 ```
 </details>
@@ -228,7 +228,7 @@ minute spends its whole rate limit on data it mostly already had.
 <dependency>
   <groupId>com.github.ialakey.marketcsgo4j</groupId>
   <artifactId>marketcsgo4j-ws</artifactId>
-  <version>v0.1.1</version>
+  <version>v0.1.2</version>
 </dependency>
 ```
 
@@ -363,7 +363,7 @@ Retries are decided by what repeating the request would cost, not by the caller:
 <dependency>
   <groupId>com.github.ialakey.marketcsgo4j</groupId>
   <artifactId>marketcsgo4j-spring-boot-starter</artifactId>
-  <version>v0.1.1</version>
+  <version>v0.1.2</version>
 </dependency>
 ```
 

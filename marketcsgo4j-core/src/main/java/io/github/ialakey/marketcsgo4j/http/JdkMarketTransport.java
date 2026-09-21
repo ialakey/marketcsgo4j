@@ -30,7 +30,7 @@ import java.util.zip.GZIPInputStream;
  */
 public final class JdkMarketTransport implements MarketTransport {
 
-    private static final String USER_AGENT = "marketcsgo4j/0.1.1 (+https://github.com/ialakey/marketcsgo4j)";
+    private static final String USER_AGENT = "marketcsgo4j/0.1.2 (+https://github.com/ialakey/marketcsgo4j)";
 
     private final HttpClient httpClient;
     private final Duration requestTimeout;

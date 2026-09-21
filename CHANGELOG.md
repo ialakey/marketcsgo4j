@@ -3,6 +3,18 @@
 All notable changes to this project are documented here. This project follows
 [semantic versioning](https://semver.org/).
 
+## [0.1.2] - 2026-09-21
+
+### Fixed
+
+- The Central publishing extension moved from a profile into the main build section. Declared in a
+  profile it is resolved too late to replace `maven-deploy-plugin`, so a publish went through the
+  wrong plugin and failed. It still does nothing before the `deploy` phase, which an ordinary
+  build never reaches.
+- The publish workflow now refuses a tag that predates the publishing setup. It runs from the
+  default branch but builds the tag, and Maven only warns when `-P` names a profile that is not
+  there.
+
 ## [0.1.1] - 2026-09-21
 
 ### Fixed
@@ -44,5 +56,6 @@ First release.
   delivery queue that drops and counts rather than buffering.
 - **Spring Boot starter** with `@ConfigurationProperties` and Micrometer metrics.
 
+[0.1.2]: https://github.com/ialakey/marketcsgo4j/releases/tag/v0.1.2
 [0.1.1]: https://github.com/ialakey/marketcsgo4j/releases/tag/v0.1.1
 [0.1.0]: https://github.com/ialakey/marketcsgo4j/releases/tag/v0.1.0

@@ -26,7 +26,7 @@ Java 21, одна зависимость (Jackson), никаких фреймв�
 <dependency>
   <groupId>com.github.ialakey.marketcsgo4j</groupId>
   <artifactId>marketcsgo4j-core</artifactId>
-  <version>v0.1.1</version>
+  <version>v0.1.2</version>
 </dependency>
 ```
 
@@ -37,9 +37,9 @@ Java 21, одна зависимость (Jackson), никаких фреймв�
 repositories { maven("https://jitpack.io") }
 
 dependencies {
-    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-core:v0.1.1")
-    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-ws:v0.1.1")               // живой поток цен
-    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-spring-boot-starter:v0.1.1")
+    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-core:v0.1.2")
+    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-ws:v0.1.2")               // живой поток цен
+    implementation("com.github.ialakey.marketcsgo4j:marketcsgo4j-spring-boot-starter:v0.1.2")
 }
 ```
 </details>
@@ -228,7 +228,7 @@ for (String chunk : index.chunks()) {
 <dependency>
   <groupId>com.github.ialakey.marketcsgo4j</groupId>
   <artifactId>marketcsgo4j-ws</artifactId>
-  <version>v0.1.1</version>
+  <version>v0.1.2</version>
 </dependency>
 ```
 
@@ -365,7 +365,7 @@ try {
 <dependency>
   <groupId>com.github.ialakey.marketcsgo4j</groupId>
   <artifactId>marketcsgo4j-spring-boot-starter</artifactId>
-  <version>v0.1.1</version>
+  <version>v0.1.2</version>
 </dependency>
 ```
 

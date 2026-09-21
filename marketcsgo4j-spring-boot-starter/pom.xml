@@ -7,7 +7,7 @@
   <parent>
     <groupId>io.github.ialakey</groupId>
     <artifactId>marketcsgo4j-parent</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
   </parent>
 
   <artifactId>marketcsgo4j-spring-boot-starter</artifactId>

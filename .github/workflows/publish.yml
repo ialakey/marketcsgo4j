@@ -33,13 +33,25 @@ jobs:
           gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
           gpg-passphrase: GPG_PASSPHRASE
 
-      # Refuse a snapshot before anything is signed or uploaded: Central will not
-      # take one, and finding that out after the signing step wastes the run.
-      - name: Check the version is a release
+      # This workflow always runs from the default branch, but builds whatever
+      # the tag contains. The two drift apart, and Maven only warns about a -P
+      # naming a profile that is not there, so a tag cut before the publishing
+      # setup existed would quietly deploy through the wrong plugin.
+      - name: Check the tag can be published
         run: |
           version=$(./mvnw -B -ntp -q -DforceStdout help:evaluate -Dexpression=project.version)
           echo "version: $version"
-          case "$version" in *SNAPSHOT) echo "refusing to publish a snapshot"; exit 1;; esac
+          case "$version" in *SNAPSHOT)
+            echo "::error::refusing to publish a snapshot"; exit 1;;
+          esac
+          grep -q '<id>central</id>' pom.xml || {
+            echo "::error::this tag has no 'central' profile; tag a commit that does"
+            exit 1
+          }
+          grep -q 'central-publishing-maven-plugin' pom.xml || {
+            echo "::error::this tag has no Central publishing plugin"
+            exit 1
+          }
 
       # Tests run again rather than trusting the run that produced the tag. This
       # is the one upload that cannot be taken back.
@@ -48,4 +60,7 @@ jobs:
         env:
           CENTRAL_TOKEN_USERNAME: ${{ secrets.CENTRAL_TOKEN_USERNAME }}
           CENTRAL_TOKEN_PASSWORD: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
+          # Both spellings: setup-java wires the first into settings.xml, and
+          # maven-gpg-plugin 3.x reads the second directly.
           GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}

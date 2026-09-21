@@ -1,0 +1,27 @@
+target/
+*.class
+*.jar
+!.mvn/wrapper/maven-wrapper.jar
+
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+
+*.log
+.DS_Store
+Thumbs.db
+
+# The local scratch note this project started from; not part of the library.
+task.txt
+
+# Never commit market API keys. A leaked one spends real money and cannot be
+# revoked without issuing a new one.
+*.env
+.env
+.env.*
+!.env.example

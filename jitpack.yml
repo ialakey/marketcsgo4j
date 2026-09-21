@@ -1,0 +1,7 @@
+# JitPack builds tags on demand, which is how this library can be depended on
+# before it is on Maven Central. It defaults to an older JDK, and this project
+# needs 21.
+jdk:
+  - openjdk21
+install:
+  - mvn -B -ntp install -DskipTests

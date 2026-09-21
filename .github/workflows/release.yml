@@ -1,0 +1,49 @@
+name: release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: The tag to build and publish
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      # Tests run again here rather than trusting the build that produced the
+      # tag: a release is the one artefact nobody re-checks afterwards.
+      - name: Build, test and package
+        run: mvn -B -ntp -P release verify
+
+      - name: Collect artefacts
+        run: |
+          mkdir -p artifacts
+          cp */target/*.jar artifacts/
+          ls -la artifacts/
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ github.event.inputs.tag || github.ref_name }}
+        run: |
+          gh release create "$TAG" artifacts/*.jar \
+            --title "$TAG" \
+            --generate-notes \
+            --verify-tag || gh release upload "$TAG" artifacts/*.jar --clobber

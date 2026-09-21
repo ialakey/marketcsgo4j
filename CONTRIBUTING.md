@@ -47,6 +47,11 @@ two short on a loaded machine. If you need a new timing assertion, follow that s
 Adding an endpoint? Add a `FakeMarket` case that pins down the parameter names. Most of the ways
 this library can be wrong are in the query string.
 
+## Releases
+
+See [RELEASING.md](RELEASING.md). Short version: a release is a tag, and publishing that tag to
+Maven Central is a separate manual step because it cannot be undone.
+
 ## Commits
 
 Plain, descriptive subject lines. Squash noise before opening the pull request.

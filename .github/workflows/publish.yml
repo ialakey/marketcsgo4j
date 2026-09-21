@@ -1,0 +1,51 @@
+name: publish to maven central
+
+# Manual on purpose. A release can be deleted from GitHub; a version published
+# to Maven Central is there permanently, so this one is never triggered by a
+# push. Run it against a tag once that tag's release workflow is green.
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: The tag to publish, e.g. v0.1.1
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag }}
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+          server-id: central
+          server-username: CENTRAL_TOKEN_USERNAME
+          server-password: CENTRAL_TOKEN_PASSWORD
+          gpg-private-key: ${{ secrets.GPG_PRIVATE_KEY }}
+          gpg-passphrase: GPG_PASSPHRASE
+
+      # Refuse a snapshot before anything is signed or uploaded: Central will not
+      # take one, and finding that out after the signing step wastes the run.
+      - name: Check the version is a release
+        run: |
+          version=$(./mvnw -B -ntp -q -DforceStdout help:evaluate -Dexpression=project.version)
+          echo "version: $version"
+          case "$version" in *SNAPSHOT) echo "refusing to publish a snapshot"; exit 1;; esac
+
+      # Tests run again rather than trusting the run that produced the tag. This
+      # is the one upload that cannot be taken back.
+      - name: Build, test, sign and publish
+        run: ./mvnw -B -ntp -P central deploy
+        env:
+          CENTRAL_TOKEN_USERNAME: ${{ secrets.CENTRAL_TOKEN_USERNAME }}
+          CENTRAL_TOKEN_PASSWORD: ${{ secrets.CENTRAL_TOKEN_PASSWORD }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
